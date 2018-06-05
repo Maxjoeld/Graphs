@@ -49,7 +49,6 @@ class GraphView extends Component {
 
     ctx.lineTo(150,160);
     ctx.stroke();
-
     ctx.beginPath(); // begin path closes the circle
     // ctx.arc(95,50,40,0,2*Math.PI);
     // ctx.moveTo(500, 50);
