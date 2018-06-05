@@ -118,6 +118,31 @@ export class Graph {
    * BFS
    */
   bfs(start) {
+    const component = [];
+    const quwuw = [];
+
+    if (reset) {
+      for (let v of this.vertexes) {
+        v.color = 'white';
+      }
+    }
+    start.color = 'gray';
+
+    while (queue.length > 0) {
+      const u = queue[0];
+
+      for (let e of u.edges) {
+        const v = e.destination;
+        if (v.color === 'white') {
+          v.color = 'gray';
+          queue.push(v);
+        }
+      }
+      queue.shift();
+      u.color= 'black';
+
+      component.push(u);
+    }
     // !!! IMPLEMENT ME
   }
 
@@ -132,6 +157,7 @@ export class Graph {
 
     for (let v of this.vertex) {
       if (needRest || v.color === 'white') {
+        const component = this.bfs(v, needReset);
         needRest = false;
 
         componentList.push(component);
